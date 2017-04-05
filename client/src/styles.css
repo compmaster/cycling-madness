@@ -1,0 +1,24 @@
+:root {
+	--sidebar-bg-color: #F7F7F7;
+	--sidebar-border: 1px solid #EEEEEE;
+	--main-bg-color: white;
+}
+html, body, cm-root {
+	height: 100%;
+	min-height: 100%
+}
+cm-root {
+	display: flex;
+	width: 100%
+}
+cm-menu {
+	background-color: var(--sidebar-bg-color);
+	border-right: var(--sidebar-border);
+	width: 20%;
+	padding: 1em;
+}
+router-outlet {
+	background-color: var(--main-bg-color);
+	width: 80%;
+	padding: 1em;
+}
