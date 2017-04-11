@@ -3,12 +3,13 @@
 	--sidebar-border: 1px solid #EEEEEE;
 	--main-bg-color: white;
 }
-html, body, cm-root {
+html, body {
 	height: 100%;
 	min-height: 100%
 }
 cm-root {
 	display: flex;
+	min-height: 100%;
 	width: 100%
 }
 cm-menu {
@@ -17,8 +18,9 @@ cm-menu {
 	width: 20%;
 	padding: 1em;
 }
+cm-root>*:last-child {
+	padding: 20px
+}
 router-outlet {
-	background-color: var(--main-bg-color);
-	width: 80%;
-	padding: 1em;
+	display: none
 }

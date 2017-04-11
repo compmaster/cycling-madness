@@ -1,6 +1,7 @@
 export enum CyclistType {
-	ROAD_CYCLIST,
-	MTB_CYCLIST,
+	TRIP,
+	ROAD,
+	MTB,
 	COACH,
 	ADMIN
 }
