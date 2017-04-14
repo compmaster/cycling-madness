@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { DataTableModule, SharedModule } from 'primeng/primeng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableModule, SharedModule, SplitButtonModule, ConfirmDialogModule } from 'primeng/primeng';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,10 @@ import { TeamsComponent } from './components/teams/teams.component';
 		HttpModule,
 		AppRoutingModule,
 		DataTableModule,
-		SharedModule
+		SharedModule,
+		SplitButtonModule,
+		ConfirmDialogModule,
+		BrowserAnimationsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

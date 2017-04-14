@@ -3,4 +3,16 @@
 	<p-column field="lastName" header="Last name" [editable]="true"></p-column>
 	<p-column field="age" header="Age" [editable]="false"></p-column>
 	<p-column field="typeName" header="Type" [editable]="true"></p-column>
+	<p-column styleClass="col-button overflow-visible" [style]="{'overflow':'visible'}">
+        <ng-template pTemplate="header">
+            
+        </ng-template>
+        <ng-template let-cyclist="rowData" pTemplate="body">
+            <!--<p-splitButton label="Edit" icon="fa-edit" (onClick)="edit()" [model]="cyclistActions" (test)="true"></p-splitButton>-->
+			<button pButton type="button" (click)="edit(cyclist)" icon="fa-edit" label="Edit"></button>
+			<button pButton type="button" (click)="remove(cyclist)" icon="fa-trash" label="Delete"></button>
+        </ng-template>
+    </p-column>
 </p-dataTable>
+
+<p-confirmDialog width="425"></p-confirmDialog>

@@ -1,4 +1,67 @@
-# Interfaces
+# Cyclist interface
+
+## Dashboard
+
+* Panel: Incoming trainings and races
+* Panel: Messages and system alerts
+* Panel: New team discussions and articles
+* Panel: Statistics and charts
+
+## Seasonal training plan
+
+Individual training plan created by team leader, coach or cyclist oneself.
+Sessions and events from team training plan are inherited unless deleted.
+
+* Switch: daily, weekly, monthly (default)
+* Switch: table view, calendar view, chart view
+* Action: specify your season goals
+* Action: synchronize rides from Strava
+* Action: add new event (race, ride, meeting, goal)
+* Component: calendar or table (with popup or not)
+	* Click event: add/edit/delete/flag/move
+	* Click plan: accept/move/miss event
+	* Click day: plan or add your day
+	* Colors: today, alerts, race, W&R, moved
+	* Consider: separate planning from ride management
+
+### Training session details
+
+* Rated Perceived Exertion (RPE) 1..10
+* Time spent on bike
+* Kilometers riden
+* Strava link
+* Cyclist's notes
+* Comments (coach or fellows)
+* Time slept last night
+* Route on map with points (e.g. accident)
+* Frame of mind:
+	* tired
+	* sleepy
+	* DOMS or injured
+	* strong power
+* Flags and alerts:
+	* Stationary trainer
+	* Accident happened
+	* Injury or DOMS
+	* Too much / too least training
+
+### Planned session details
+
+* Progress (completion of planned session)
+* [...]
+
+Create planned and done sessions as separate entities or merge them?
+
+### Adding new training session
+
+All changes need to be journaled and versioned in database.
+
+* Action: 
+
+4. Exercises table with related periods
+5. Progress charts (more detailed)
+6. Long-term training plan
+7. Races (A,B,C)
 
 ## Admin panel
 
@@ -10,19 +73,6 @@
 * Statistics
 2. Application settings
 3. Team view / cyclist view / coach view
-
-## Cyclist interface
-
-1. Dashboard
-* Incoming trainings and races
-* Messages from coach and system alerts
-* Statistics and charts (to be specified later)
-2. Seasonal training plan (weekly, daily, monthly)
-3. Training session details (all changes journaled)
-4. Exercises table with related periods
-5. Progress charts (more detailed)
-6. Long-term training plan
-7. Races (A,B,C)
 
 ## Coach interface
 

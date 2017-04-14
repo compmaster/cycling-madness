@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem, ConfirmationService } from 'primeng/primeng';
 import { Cyclist } from '../../entities/cyclist';
 import { CyclistService } from '../../services/cyclist.service';
 
 @Component({
 	selector: 'cm-cyclists',
 	templateUrl: './cyclists.component.html',
+	providers: [ConfirmationService],
 	styleUrls: ['./cyclists.component.css']
 })
 export class CyclistsComponent implements OnInit {
 
 	cyclists: Cyclist[] = [];
+	cyclistActions: MenuItem[];
 
-	constructor(private cyclistService: CyclistService) { }
+	constructor(private cyclistService: CyclistService, private confirmationService: ConfirmationService) { }
 
 	ngOnInit() {
 		this.loadCyclists();
@@ -19,6 +22,23 @@ export class CyclistsComponent implements OnInit {
 
 	loadCyclists() {
 		this.cyclistService.getCyclists().then(cyclists => this.cyclists = cyclists);
+	}
+
+	edit() {
+		alert('test');
+	}
+
+	remove(cyclist: Cyclist): void {
+		this.confirmationService.confirm({
+			message: 'Do you want to delete this cyclist forever?',
+			header: 'Delete Confirmation',
+            icon: 'fa fa-trash',
+			accept: () => { this._remove(cyclist); }
+		})
+	}
+	
+	_remove(cyclist: Cyclist): void {
+		this.cyclistService.remove(cyclist);
 	}
 
 }

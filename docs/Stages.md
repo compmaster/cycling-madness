@@ -19,31 +19,21 @@
 ## Goals
 
 1. Manage cyclists and teams on client.
+2. Write some unit tests.
+
+## Steps
+
+1. Add add/edit/delete buttons to tables.
+2. Complete services and store data in localStorage.
+3. Write CRUD unit tests.
+
+# Stage 3. 
 
 
 
+# Further plans
 
-
-
-
-
-
-
-## Server-side changes
-
-1. Update existing controllers and create a new one:
-* CyclistController
-* * getCyclists() GET /cyclists
-* * saveCyclist() POST /cyclists
-* * deleteCyclist() DELETE /cyclists/:id
-* TeamController() GET /team
-* 
-
-Create, edit and delete cyclists
-2. Create database structure with cyclists table
-3. Create server-side validation
-
-### Create Spring application
-
-For now it has been created with NetBeans using ant build system.
-TODO: Switch to Maven or Gradle.
+1. Move from PrimeNG to Ng-BootStrap or Angular Material.
+2. Move from Bootstrap to Foundation or other CSS.
+3. Move from Angular to own library based on native ES6.
+4. Move from Java to PHP because of higher availibility.

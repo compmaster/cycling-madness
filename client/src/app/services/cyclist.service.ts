@@ -10,5 +10,9 @@ export class CyclistService {
   getCyclists(): Promise<Cyclist[]> {
 	  return Promise.resolve(CYCLISTS);
   }
+  
+  remove(cyclist: Cyclist): void {
+	  CYCLISTS.splice(CYCLISTS.findIndex(x => x.id === cyclist.id), 1);
+  }
 
 }
