@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem, ConfirmationService } from 'primeng/primeng';
+import { MenuItem, ConfirmationService, Message } from 'primeng/primeng';
 import { Cyclist } from '../../entities/cyclist';
 import { CyclistService } from '../../services/cyclist.service';
 
@@ -13,6 +13,8 @@ export class CyclistsComponent implements OnInit {
 
 	cyclists: Cyclist[] = [];
 	cyclistActions: MenuItem[];
+	selectedCyclists: Cyclist[];
+	messages: Message[] = [];
 
 	constructor(private cyclistService: CyclistService, private confirmationService: ConfirmationService) { }
 
@@ -30,15 +32,20 @@ export class CyclistsComponent implements OnInit {
 
 	remove(cyclist: Cyclist): void {
 		this.confirmationService.confirm({
-			message: 'Do you want to delete this cyclist forever?',
-			header: 'Delete Confirmation',
-            icon: 'fa fa-trash',
+			message: 'Do you want to delete ' + cyclist.name + ' forever?',
+			header: cyclist.name,
+			icon: 'fa fa-trash',
 			accept: () => { this._remove(cyclist); }
 		})
 	}
-	
+
 	_remove(cyclist: Cyclist): void {
 		this.cyclistService.remove(cyclist);
+		this.messages.push({
+			severity: 'info',
+			summary: cyclist.name,
+			detail: 'Cyclist ' + cyclist.name + ' deleted.'
+		});
 	}
 
 }

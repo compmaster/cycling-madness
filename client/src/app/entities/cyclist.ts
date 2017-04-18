@@ -23,6 +23,10 @@ export class Cyclist {
 		return this.teams[0];
 	}
 	
+	get name(): string {
+		return this.firstName + ' ' + this.lastName;
+	}
+	
 	get typeName(): string {
 		return CyclistType[this.type];
 	}

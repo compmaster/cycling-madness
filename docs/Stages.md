@@ -19,17 +19,28 @@
 ## Goals
 
 1. Manage cyclists and teams on client.
-2. Write some unit tests.
+2. Check functionality of PrimeNG.
+3. Write some unit tests.
 
 ## Steps
 
 1. Add add/edit/delete buttons to tables.
-2. Complete services and store data in localStorage.
-3. Write CRUD unit tests.
+2. Complete services for basic CRUD actions.
+3. Create edit forms for cyclists and teams.
+4. Write CRUD unit tests.
 
 # Stage 3. 
 
+## Goals
 
+1. Server-side application with Spring and Java 8.
+2. Cyclists and teams stored in database.
+
+## Steps
+
+1. Create basic Java 8 application with Spring and Maven.
+2. Create controllers, services, DAO and DTO classes.
+3. Modify Angular services to load data from server.
 
 # Further plans
 

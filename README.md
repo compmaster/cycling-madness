@@ -1,2 +1,2 @@
 # cycling-madness
-Cycling Madness
+All cyclists are going to hell.
