@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem, ConfirmationService, Message } from 'primeng/primeng';
+import { Router } from '@angular/router';
+import { MenuItem, ConfirmationService } from 'primeng/primeng';
 import { Cyclist } from '../../entities/cyclist';
+import { AlertService } from '../../services/alert.service';
 import { CyclistService } from '../../services/cyclist.service';
 
 @Component({
@@ -14,9 +16,12 @@ export class CyclistsComponent implements OnInit {
 	cyclists: Cyclist[] = [];
 	cyclistActions: MenuItem[];
 	selectedCyclists: Cyclist[];
-	messages: Message[] = [];
 
-	constructor(private cyclistService: CyclistService, private confirmationService: ConfirmationService) { }
+	constructor(
+		private cyclistService: CyclistService,
+		private confirmationService: ConfirmationService,
+		private alertService: AlertService,
+		private router: Router) { }
 
 	ngOnInit() {
 		this.loadCyclists();
@@ -26,8 +31,8 @@ export class CyclistsComponent implements OnInit {
 		this.cyclistService.getCyclists().then(cyclists => this.cyclists = cyclists);
 	}
 
-	edit() {
-		alert('test');
+	edit(cyclist: Cyclist) {
+		this.router.navigate(['edit-cyclist/', cyclist.id]);
 	}
 
 	remove(cyclist: Cyclist): void {
@@ -41,11 +46,7 @@ export class CyclistsComponent implements OnInit {
 
 	_remove(cyclist: Cyclist): void {
 		this.cyclistService.remove(cyclist);
-		this.messages.push({
-			severity: 'info',
-			summary: cyclist.name,
-			detail: 'Cyclist ' + cyclist.name + ' deleted.'
-		});
+		this.alertService.success('Cyclist ' + cyclist.name + ' deleted.', cyclist.name);
 	}
 
 }

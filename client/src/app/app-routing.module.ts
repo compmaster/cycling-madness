@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CyclistsComponent } from './components/cyclists/cyclists.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { EditCyclistComponent } from './components/edit-cyclist/edit-cyclist.component';
+import { EditTeamComponent } from './components/edit-team/edit-team.component';
 
 const routes: Routes = [
 	{
@@ -23,8 +24,16 @@ const routes: Routes = [
 		component: EditCyclistComponent
 	},
 	{
-		path: 'edit-cyclist',
+		path: 'add-cyclist',
 		component: EditCyclistComponent
+	},
+	{
+		path: 'edit-team/:id',
+		component: EditTeamComponent
+	},
+	{
+		path: 'add-team',
+		component: EditTeamComponent
 	}
 ];
 

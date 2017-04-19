@@ -3,19 +3,19 @@
 <form>
 	<div class="form-group">
 		<label for="firstName">First name</label>
-		<input id="firstName" class="form-control" required>
+		<input id="firstName" name="firstName" [(ngModel)]="cyclist.firstName" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<label for="lastName">Last name</label>
-		<input id="lastName" class="form-control" required>
+		<input id="lastName" name="lastName" [(ngModel)]="cyclist.lastName" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<label for="bornDate">Date of birth</label>
-		<input type="date" id="bornDate" class="form-control" required>
+		<input type="date" name="date" [(ngModel)]="cyclist.date" id="bornDate" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<label for="weight">Weight</label>
-		<input type="number" id="weight" class="form-control" required>
+		<input type="number" name="weight" [(ngModel)]="cyclist.weight" id="weight" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<label for="type">Type</label>
@@ -23,6 +23,6 @@
 	</div>
 	<div class="form-group">
 		<label></label>
-		<button pButton type="button" class="ui-button-success" label="Zapisz" (click)="save()"></button>
+		<button pButton type="button" class="ui-button-success" label="Save" (click)="save()"></button>
 	</div>
 </form>

@@ -5,12 +5,17 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableModule, SharedModule, SplitButtonModule, ConfirmDialogModule, GrowlModule, SelectButtonModule } from 'primeng/primeng';
 
+import { AlertService } from './services/alert.service';
+import { CyclistService } from './services/cyclist.service';
+import { TeamService } from './services/team.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CyclistsComponent } from './components/cyclists/cyclists.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { EditCyclistComponent } from './components/edit-cyclist/edit-cyclist.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { EditTeamComponent } from './components/edit-team/edit-team.component';
 
 @NgModule({
 	declarations: [
@@ -18,7 +23,9 @@ import { EditCyclistComponent } from './components/edit-cyclist/edit-cyclist.com
 		MenuComponent,
 		CyclistsComponent,
 		TeamsComponent,
-		EditCyclistComponent
+		EditCyclistComponent,
+		AlertsComponent,
+		EditTeamComponent
 	],
 	imports: [
 		BrowserModule,
@@ -33,7 +40,7 @@ import { EditCyclistComponent } from './components/edit-cyclist/edit-cyclist.com
 		GrowlModule,
 		SelectButtonModule
 	],
-	providers: [],
+	providers: [AlertService, CyclistService, TeamService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

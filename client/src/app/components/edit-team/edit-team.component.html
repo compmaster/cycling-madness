@@ -1,0 +1,24 @@
+<h1 *ngIf="team.id">Edit team</h1>
+<h1 *ngIf="!team.id">New team form</h1>
+<form>
+	<div class="form-group">
+		<label for="name">Team name</label>
+		<input id="name" name="name" [(ngModel)]="team.name" class="form-control" required>
+	</div>
+	<div class="form-group">
+		<label for="info">Description</label>
+		<textarea id="info" name="info" [(ngModel)]="team.info" class="form-control" required></textarea>
+	</div>
+	<div class="form-group">
+		<label for="type">Training type</label>
+		<p-selectButton [options]="types" [(ngModel)]="team.type" name="type" class="form-control"></p-selectButton>
+	</div>
+	<div class="form-group">
+		<label for="type">Training method</label>
+		<p-selectButton [options]="trainingMethods" [(ngModel)]="team.trainingMethod" name="trainingMethods" class="form-control"></p-selectButton>
+	</div>
+	<div class="form-group">
+		<label></label>
+		<button pButton type="button" class="ui-button-success" label="Save" (click)="save()"></button>
+	</div>
+</form>

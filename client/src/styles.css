@@ -24,3 +24,6 @@ cm-root>*:last-child {
 router-outlet {
 	display: none
 }
+p-growl {
+	
+}
