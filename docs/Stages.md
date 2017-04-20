@@ -20,16 +20,14 @@
 
 1. Manage cyclists and teams on client.
 2. Check functionality of PrimeNG.
-3. Write some unit tests.
 
 ## Steps
 
 1. Add add/edit/delete buttons to tables.
 2. Complete services for basic CRUD actions.
 3. Create edit forms for cyclists and teams.
-4. Write CRUD unit tests.
 
-# Stage 3. 
+# Stage 3. Initial Spring application
 
 ## Goals
 
@@ -41,6 +39,23 @@
 1. Create basic Java 8 application with Spring and Maven.
 2. Create controllers, services, DAO and DTO classes.
 3. Modify Angular services to load data from server.
+
+# Stage 4. Database
+
+## Goals
+
+1. Basic database structure for application.
+2. Store cyclists and teams in database.
+
+## Steps
+
+1. Create a new H2 database.
+2. Write SQL script to create cyclists and teams table.
+3. Modify DAO to load cyclists and teams from database.
+
+# Stage 5. Training plan
+
+TODO: The most important part that needs to be discussed.
 
 # Further plans
 
