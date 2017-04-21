@@ -50,17 +50,26 @@ export class EditCyclistComponent implements OnInit {
 	
 	loadCyclistForEdit() {
 		this.route.params.switchMap((params: Params) => this.cyclistService
-			.getCyclist(+params['id'])
-			.then((cyclist: Cyclist) => { this.cyclist = cyclist })
-			.catch((reason: any) => console.log(reason))
-		).subscribe();
+			.getCyclist(+params['id']))
+			.subscribe((cyclist: Cyclist) => this.cyclist = cyclist);
 	}
 	
 	save() {
-		this.cyclistService.save(this.cyclist).then(() => {
-			this.alertService.success("Cyclist saved");
-			this.router.navigate(['cyclists']);
-		});
+		if(this.cyclist.id) {
+			this.cyclistService.update(this.cyclist).subscribe(() => this.onUpdated());
+		} else {
+			this.cyclistService.create(this.cyclist).subscribe(() => this.onCreated());
+		}
+	}
+	
+	onCreated() {
+		this.alertService.success("Cyclist created successfully.", this.cyclist.name);
+		this.router.navigate(['cyclists']);
+	}
+	
+	onUpdated() {
+		this.alertService.success("Cyclist updated successfully.", this.cyclist.name);
+		this.router.navigate(['cyclists']);
 	}
 
 }

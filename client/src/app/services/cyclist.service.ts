@@ -1,43 +1,33 @@
 import { Injectable } from '@angular/core';
-import { CYCLISTS } from '../data/test-cyclists';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Cyclist } from '../entities/cyclist';
+import { API_ENDPOINT } from '../app.config';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class CyclistService {
 
-	constructor() { }
+	constructor(private http: Http) { }
 
-	getCyclists(): Promise<Cyclist[]> {
-		return Promise.resolve(CYCLISTS);
+	getCyclists(): Observable<Cyclist[]> {
+		return this.http.get(API_ENDPOINT + 'cyclists').map(response => response.json());
 	}
 
-	getCyclist(id: number): Promise<Cyclist> {
-		console.log('getting cyclist id=' + id);
-		let cyclist = CYCLISTS.find(x => x.id === id);
-		if (cyclist) {
-			return Promise.resolve(cyclist);
-		} else {
-			return Promise.reject("Could not find cyclist with ID=" + id);
-		}
+	getCyclist(id: number): Observable<Cyclist> {
+		return this.http.get(API_ENDPOINT + 'cyclists/' + id).map(response => response.json());
 	}
 
-	remove(cyclist: Cyclist): void {
-		CYCLISTS.splice(CYCLISTS.findIndex(x => x.id === cyclist.id), 1);
+	remove(cyclist: Cyclist): Observable<Response> {
+		return this.http.delete(API_ENDPOINT + 'cyclists/' + cyclist.id);
 	}
 
-	save(cyclist: Cyclist): Promise<void> {
-		if (cyclist.id) {
-			let existingCyclist = CYCLISTS.find(x => x.id === cyclist.id);
-			if (existingCyclist) {
-				existingCyclist = cyclist;
-				return Promise.resolve();
-			} else {
-				return Promise.reject('Could not update cyclist with ID=' + cyclist.id);
-			}
-		} else {
-			CYCLISTS.push(cyclist);
-			return Promise.resolve();
-		}
+	update(cyclist: Cyclist): Observable<Response> {
+		return this.http.put(API_ENDPOINT + 'cyclists/' + cyclist.id, cyclist);
+	}
+	
+	create(cyclist: Cyclist): Observable<Response> {
+		return this.http.post(API_ENDPOINT + 'cyclists', cyclist);
 	}
 
 }

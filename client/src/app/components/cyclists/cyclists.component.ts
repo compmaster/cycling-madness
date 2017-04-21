@@ -28,7 +28,7 @@ export class CyclistsComponent implements OnInit {
 	}
 
 	loadCyclists() {
-		this.cyclistService.getCyclists().then(cyclists => this.cyclists = cyclists);
+		this.cyclistService.getCyclists().subscribe(cyclists => this.cyclists = cyclists);
 	}
 
 	edit(cyclist: Cyclist) {
@@ -45,8 +45,9 @@ export class CyclistsComponent implements OnInit {
 	}
 
 	_remove(cyclist: Cyclist): void {
-		this.cyclistService.remove(cyclist);
-		this.alertService.success('Cyclist ' + cyclist.name + ' deleted.', cyclist.name);
+		this.cyclistService.remove(cyclist).subscribe(() =>
+			this.alertService.success('Cyclist ' + cyclist.name + ' deleted.', cyclist.name)
+		);
 	}
 
 }

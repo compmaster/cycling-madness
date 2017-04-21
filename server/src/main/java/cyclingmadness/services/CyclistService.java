@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 /**
@@ -47,6 +48,24 @@ public class CyclistService {
 		} else {
 			return null;
 		}
+	}
+	
+	public void createCyclist(Cyclist cyclist) {
+		dummyCyclists.add(cyclist);
+	}
+
+	public void updateCyclist(Cyclist cyclist) {
+		for(int i=0; i<dummyCyclists.size(); ++i) {
+			if(dummyCyclists.get(i).getId() == cyclist.getId()) {
+				dummyCyclists.set(i, cyclist);
+				return;
+			}
+		}
+		//TODO: throw new ObjectNotFoundException();
+	}
+
+	public void deleteCyclist(int id) {
+		dummyCyclists.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
 	}
 	
 	private String[] getRandomDummyNames() {
