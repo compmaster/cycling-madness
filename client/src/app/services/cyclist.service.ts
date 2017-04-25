@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Cyclist } from '../entities/cyclist';
 import { API_ENDPOINT } from '../app.config';
 import 'rxjs/add/operator/map';

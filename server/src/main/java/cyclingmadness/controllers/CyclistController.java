@@ -32,12 +32,12 @@ public class CyclistController {
 	}
 	
 	@GetMapping("/cyclists/{id}")
-	public Cyclist getCyclist(@PathVariable int id) {
+	public Cyclist getCyclist(@PathVariable long id) {
 		return cyclistService.getCyclist(id);
 	}
 	
 	@PostMapping("/cyclists")
-	public void addCyclist(Cyclist cyclist) throws URISyntaxException {
+	public void createCyclist(Cyclist cyclist) throws URISyntaxException {
 		cyclistService.createCyclist(cyclist);
 	}
 	
@@ -52,7 +52,7 @@ public class CyclistController {
 	}
 	
 	@DeleteMapping("/cyclists/{id}")
-	public void deleteCyclist(@PathVariable int id) {
+	public void deleteCyclist(@PathVariable long id) {
 		cyclistService.deleteCyclist(id);
 	}
 	

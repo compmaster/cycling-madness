@@ -1,44 +1,32 @@
 import { Injectable } from '@angular/core';
-import { TEAMS } from '../data/test-teams';
+import { Http, Response } from '@angular/http';
 import { Team } from '../entities/team';
+import { API_ENDPOINT } from '../app.config';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class TeamService {
 
-	constructor() { }
+	constructor(private http: Http) { }
 	
-	getTeams(): Promise<Team[]> {
-		console.log('getting teams');
-		return Promise.resolve(TEAMS);
+	getTeams(): Observable<Team[]> {
+		return this.http.get(API_ENDPOINT + 'teams').map(response => response.json());
 	}
 
-	getTeam(id: number): Promise<Team> {
-		console.log('getting team id=' + id);
-		let team = TEAMS.find(x => x.id === id);
-		if (team) {
-			return Promise.resolve(team);
-		} else {
-			return Promise.reject("Could not find team with ID=" + id);
-		}
+	getTeam(id: number): Observable<Team> {
+		return this.http.get(API_ENDPOINT + 'teams/' + id).map(response => response.json());
 	}
 	
-	remove(team: Team): void {
-		TEAMS.splice(TEAMS.findIndex(x => x.id === team.id), 1);
+	remove(team: Team): Observable<Response> {
+		return this.http.delete(API_ENDPOINT + 'teams/' + team.id);
 	}
 	
-	save(team: Team): Promise<void> {
-		if (team.id) {
-			let existingCyclist = TEAMS.find(x => x.id === team.id);
-			if (existingCyclist) {
-				existingCyclist = team;
-				return Promise.resolve();
-			} else {
-				return Promise.reject('Could not update team with ID=' + team.id);
-			}
-		} else {
-			TEAMS.push(team);
-			return Promise.resolve();
-		}
+	update(team: Team): Observable<Response> {
+		return this.http.put(API_ENDPOINT + 'teams/' + team.id, team);
+	}
+	
+	create(team: Team): Observable<Response> {
+		return this.http.post(API_ENDPOINT + 'teams', team);
 	}
 
 }

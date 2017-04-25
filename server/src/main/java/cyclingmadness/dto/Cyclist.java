@@ -1,17 +1,30 @@
 package cyclingmadness.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  * Cyclist entity class.
  *
  * @author compmaster
  */
-public class Cyclist {
+@Entity
+@Table(name = "cyclists")
+@SuppressWarnings("PersistenceUnitPresent")
+public class Cyclist implements Serializable {
 
-	private int id;
+	@Id
+	@GeneratedValue
+	private long id;
 	private String firstName;
 	private String lastName;
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date bornDate;
 	private int weight;
 	private CyclistType type;
@@ -19,11 +32,11 @@ public class Cyclist {
 	private Ride[] rides;
 	private Team[] teams;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

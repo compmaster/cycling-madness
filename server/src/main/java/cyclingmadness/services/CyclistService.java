@@ -1,5 +1,6 @@
 package cyclingmadness.services;
 
+import cyclingmadness.dao.CyclistRepository;
 import cyclingmadness.dto.Cyclist;
 import cyclingmadness.dto.CyclistType;
 import java.time.LocalDate;
@@ -7,10 +8,11 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
-import java.util.stream.Collectors;
+import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service related to cyclists.
@@ -18,11 +20,39 @@ import org.springframework.stereotype.Service;
  * @author compmaster
  */
 @Service
+@Transactional
 public class CyclistService {
 
-	private final List<Cyclist> dummyCyclists = new ArrayList<>();
+	@Autowired
+	CyclistRepository cyclistRepository;
 
-	public CyclistService() {
+	@PostConstruct
+	public void init() {
+		createDummyCyclists();
+	}
+
+	public List<Cyclist> getAllCyclists() {
+		return cyclistRepository.findAll();
+	}
+	
+	public Cyclist getCyclist(long id) {
+		return cyclistRepository.findOne(id);
+	}
+	
+	public void createCyclist(Cyclist cyclist) {
+		cyclistRepository.save(cyclist);
+	}
+
+	public void updateCyclist(Cyclist cyclist) {
+		cyclistRepository.save(cyclist);
+	}
+
+	public void deleteCyclist(long id) {
+		cyclistRepository.delete(id);
+	}
+	
+	private void createDummyCyclists() {
+		List<Cyclist> dummyCyclists = new ArrayList<>();
 		String[] names = getRandomDummyNames();
 		Random random = new Random();
 		for(int i=0; i<names.length; ++i) {
@@ -35,37 +65,7 @@ public class CyclistService {
 			cyclist.setBornDate(getRandomBornDate());
 			dummyCyclists.add(cyclist);
 		}
-	}
-
-	public List<Cyclist> getAllCyclists() {
-		return dummyCyclists;
-	}
-	
-	public Cyclist getCyclist(int id) {
-		Optional<Cyclist> cyclist = dummyCyclists.stream().filter(x -> x.getId() == id).findFirst();
-		if(cyclist.isPresent()) {
-			return cyclist.get();
-		} else {
-			return null;
-		}
-	}
-	
-	public void createCyclist(Cyclist cyclist) {
-		dummyCyclists.add(cyclist);
-	}
-
-	public void updateCyclist(Cyclist cyclist) {
-		for(int i=0; i<dummyCyclists.size(); ++i) {
-			if(dummyCyclists.get(i).getId() == cyclist.getId()) {
-				dummyCyclists.set(i, cyclist);
-				return;
-			}
-		}
-		//TODO: throw new ObjectNotFoundException();
-	}
-
-	public void deleteCyclist(int id) {
-		dummyCyclists.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
+		cyclistRepository.save(dummyCyclists);
 	}
 	
 	private String[] getRandomDummyNames() {

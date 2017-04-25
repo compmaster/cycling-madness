@@ -62,17 +62,26 @@ export class EditTeamComponent implements OnInit {
 	
 	loadTeamForEdit() {
 		this.route.params.switchMap((params: Params) => this.teamService
-			.getTeam(+params['id'])
-			.then((team: Team) => { this.team = team })
-			.catch((reason: any) => console.log(reason))
-		).subscribe();
+			.getTeam(+params['id']))
+			.subscribe((team: Team) => this.team = team);
 	}
 	
 	save() {
-		this.teamService.save(this.team).then(() => {
-			this.alertService.success("Team saved");
-			this.router.navigate(['teams']);
-		});
+		if(this.team.id) {
+			this.teamService.update(this.team).subscribe(() => this.onUpdated());
+		} else {
+			this.teamService.create(this.team).subscribe(() => this.onCreated());
+		}
+	}
+	
+	onCreated() {
+		this.alertService.success("Team created successfully.", this.team.name);
+		this.router.navigate(['teams']);
+	}
+	
+	onUpdated() {
+		this.alertService.success("Team updated successfully.", this.team.name);
+		this.router.navigate(['teams']);
 	}
 
 }

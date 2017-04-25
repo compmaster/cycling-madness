@@ -28,7 +28,7 @@ export class TeamsComponent implements OnInit {
 	}
 
 	loadTeams() {
-		this.teamService.getTeams().then(teams => this.teams = teams);
+		this.teamService.getTeams().subscribe(teams => this.teams = teams);
 	}
 
 	edit(team: Team) {
@@ -45,8 +45,9 @@ export class TeamsComponent implements OnInit {
 	}
 
 	_remove(team: Team): void {
-		this.teamService.remove(team);
-		this.alertService.success('Cyclist ' + team.name + ' deleted.', team.name);
+		this.teamService.remove(team).subscribe(() =>
+			this.alertService.success('Team ' + team.name + ' deleted.', team.name)
+		);
 	}
 
 }

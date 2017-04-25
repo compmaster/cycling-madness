@@ -1,23 +1,34 @@
 package cyclingmadness.dto;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Team entity class.
  *
  * @author compmaster
  */
-public class Team {
+@Entity
+@Table(name="teams")
+@SuppressWarnings("PersistenceUnitPresent")
+public class Team implements Serializable {
 
-	private int id;
+	@Id
+	@GeneratedValue
+	private long id;
 	private String name;
 	private TeamType type;
 	private TrainingMethod trainingMethod;
 	private String info;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

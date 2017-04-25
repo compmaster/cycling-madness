@@ -2,9 +2,8 @@
 
 ## Goals
 
-1. Initial client-side structure with Angular.
-2. Basic interface with CSS flexbox.
-3. Read-only table of dummy cyclists and teams.
+1. Manage cyclists and teams on client.
+2. Check functionality of PrimeNG.
 
 ## Steps
 
@@ -12,22 +11,9 @@
 2. Add Bootstrap and Primefaces with npm package manager.
 3. Create entities: Bike, Cyclist, Ride, Team.
 4. Create components: menu, cyclists, teams.
-5. Design basic interface with HTML and CSS.
+5. Create edit forms for cyclists and teams.
 
-# Stage 2. Client-side CRUD cyclists
-
-## Goals
-
-1. Manage cyclists and teams on client.
-2. Check functionality of PrimeNG.
-
-## Steps
-
-1. Add add/edit/delete buttons to tables.
-2. Complete services for basic CRUD actions.
-3. Create edit forms for cyclists and teams.
-
-# Stage 3. Initial Spring application
+# Stage 2. Initial Spring application
 
 ## Goals
 
@@ -39,23 +25,12 @@
 1. Create basic Java 8 application with Spring and Maven.
 2. Create controllers, services, DAO and DTO classes.
 3. Modify Angular services to load data from server.
-
-# Stage 4. Database
-
-## Goals
-
-1. Basic database structure for application.
-2. Store cyclists and teams in database.
-
-## Steps
-
-1. Create a new H2 database.
-2. Write SQL script to create cyclists and teams table.
-3. Modify DAO to load cyclists and teams from database.
+4. Create a new H2 database and write DDL script.
+5. Use Spring ORM to load cyclists and teams from database.
 
 # Stage 5. Training plan
 
-TODO: The most important part that needs to be discussed.
+
 
 # Further plans
 
