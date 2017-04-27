@@ -7,18 +7,21 @@ npm install -g @angular/cli
 npm new CyclingMadness --skip-git --directory=client --prefix=cm --routing=true
 ```
 
-## Add Bootstrap
+## Add Bootstrap and Primefaces
 
 ```
-npm install ng2-bootstrap --save
+npm install ng2-bootstrap primeng --save
 ```
 
-## Add boostrap.min.css to `styles` array in .angular-cli.json
+## Add CSS files to .angular-cli.json
 
 ```
 "styles": [
 	"styles.css",
-	"../node_modules/bootstrap/dist/css/bootstrap.min.css"
+	"../node_modules/bootstrap/dist/css/bootstrap.min.css",
+	"../node_modules/primeng/resources/primeng.min.css",
+	"../node_modules/primeng/resources/themes/omega/theme.css",
+	"../node_modules/font-awesome/css/font-awesome.min.css"
 ],
 ```
 
@@ -87,15 +90,29 @@ ng g cl Team
 
 ### Create basic components
 
-* MenuComponent
+* AlertsComponent
 * CyclistsComponent
+* EditCyclistComponent
+* EditTeamComponent
+* MenuComponent
+* TeamsComponent
 
 ```
 cd ..
-ng g c menu
+mkdir components
+cd components
+ng g c alerts
 ng g c cyclists
+ng g c edit-cyclist
+ng g c edit-team
+ng g c menu
+ng g c teams
 ```
 
 ### Fill components with code and create test cyclists
 
-`cyclists.components.ts` contains dummy cyclists from random name generator.
+`data/test-cyclists.ts` contains dummy cyclists from random name generator.
+`data/test-teams.ts` contains dummy teams.
+
+Create only basic forms for editing cyclists and teams.
+Add new routes to `app-rouing.module.ts` file.

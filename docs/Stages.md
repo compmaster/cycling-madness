@@ -25,12 +25,22 @@
 1. Create basic Java 8 application with Spring and Maven.
 2. Create controllers, services, DAO and DTO classes.
 3. Modify Angular services to load data from server.
-4. Create a new H2 database and write DDL script.
+4. Create a new internal database without DDL script.
 5. Use Spring ORM to load cyclists and teams from database.
 
-# Stage 5. Training plan
+# Stage 3. Basic training plan
 
+## Goals
 
+1. Manage exercises, phases, aspects, knowledge base.
+2. Manage training plan templates or load from repository.
+3. Define races, race goals, season goals.
+
+## Steps
+
+1. Create entities for exercises, phases, aspects, notes.
+2. Create training plan components: yearly, weekly, daily.
+3. Create forms for above.
 
 # Further plans
 
@@ -38,3 +48,8 @@
 2. Move from Bootstrap to Foundation or other CSS.
 3. Move from Angular to own library based on native ES6.
 4. Move from Java to PHP because of higher availibility.
+
+# Known issues
+
+1. Enums not configurable. Convert them into dictionary.
+2. Date format issues in forms.
