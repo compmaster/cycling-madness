@@ -47,7 +47,7 @@
 1. Move from PrimeNG to Ng-BootStrap or Angular Material.
 2. Move from Bootstrap to Foundation or other CSS.
 3. Move from Angular to own library based on native ES6.
-4. Move from Java to PHP because of higher availibility.
+4. Switch to feature-based packages.
 
 # Known issues
 

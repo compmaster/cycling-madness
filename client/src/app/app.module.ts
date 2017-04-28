@@ -16,6 +16,8 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { EditCyclistComponent } from './components/edit-cyclist/edit-cyclist.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
+import { EtudesComponent } from './components/etudes/etudes.component';
+import { ProgramsComponent } from './components/programs/programs.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +27,9 @@ import { EditTeamComponent } from './components/edit-team/edit-team.component';
 		TeamsComponent,
 		EditCyclistComponent,
 		AlertsComponent,
-		EditTeamComponent
+		EditTeamComponent,
+		EtudesComponent,
+		ProgramsComponent
 	],
 	imports: [
 		BrowserModule,
