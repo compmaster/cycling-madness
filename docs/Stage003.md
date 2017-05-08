@@ -15,7 +15,7 @@ This application is focused on training plans. Therefore the core features are:
 
 ### Feature chain
 
-Program -> templates -> seasons -> periods -> sessions -> exercises
+Program -> templates -> seasons -> periods -> sessions -> etudes -> points
 
 ### Program
 
@@ -45,9 +45,9 @@ This is a planned ride, race, meeting or test. Cyclist may:
 * set exertion values (RPE, distance, time)
 * add personal notes
 
-### Exercise
+### Etude
 
-This is an element of training session, e.g. intervals, ramps, power, endurance.
+This is a class of training session, e.g. intervals, ramps, power, endurance.
 Each exercise has a symbol, description, selectors and predefined parameters:
 * name
 * description
@@ -55,7 +55,13 @@ Each exercise has a symbol, description, selectors and predefined parameters:
 * exercise type: interval, ride, sprint, uphill, technique
 * effort and pause durations (someday useful in mobile app)
 
-Divide exercises and params into 2 database to let cyclists adjust params?
+### Point
+
+This is an element of a training session created automatically based on etude.
+Parameters may vary depending on age, experience, period and cyclist settings.
+* type: warm-up, flat interval, uphill interval, downhill, sprint, warm-down
+* time: null | number of seconds
+* distance: null | number of meters
 
 ### Training plan inheritance
 
