@@ -1,6 +1,5 @@
 package cyclingmadness.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;

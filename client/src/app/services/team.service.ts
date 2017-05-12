@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Team } from '../entities/team';
-import { API_ENDPOINT } from '../app.config';
 import { Observable } from 'rxjs/Rx';
+import { ApiService } from '../services/api.service';
 
 @Injectable()
 export class TeamService {
 
-	constructor(private http: Http) { }
+	constructor(private api: ApiService<Team>) {}
 	
 	getTeams(): Observable<Team[]> {
-		return this.http.get(API_ENDPOINT + 'teams').map(response => response.json());
+		return this.api.getAll('teams');
 	}
 
 	getTeam(id: number): Observable<Team> {
-		return this.http.get(API_ENDPOINT + 'teams/' + id).map(response => response.json());
+		return this.api.getOne('teams', id);
 	}
 	
 	remove(team: Team): Observable<Response> {
-		return this.http.delete(API_ENDPOINT + 'teams/' + team.id);
+		return this.api.deleteOne('teams', team);
 	}
 	
 	update(team: Team): Observable<Response> {
-		return this.http.put(API_ENDPOINT + 'teams/' + team.id, team);
+		return this.api.updateOne('teams', team);
 	}
 	
 	create(team: Team): Observable<Response> {
-		return this.http.post(API_ENDPOINT + 'teams', team);
+		return this.api.createOne('teams', team);
 	}
 
 }

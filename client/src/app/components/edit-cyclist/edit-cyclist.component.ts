@@ -6,6 +6,7 @@ import { CyclistService } from '../../services/cyclist.service';
 import { AlertService } from '../../services/alert.service';
 import { SelectItem } from 'primeng/primeng';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
 
 @Component({
 	selector: 'cm-edit-cyclist',
@@ -49,7 +50,7 @@ export class EditCyclistComponent implements OnInit {
 	}
 	
 	loadCyclistForEdit() {
-		this.route.params.switchMap((params: Params) => this.cyclistService
+		this.route.params.filter(x => x['id']).switchMap((params: Params) => this.cyclistService
 			.getCyclist(+params['id']))
 			.subscribe((cyclist: Cyclist) => this.cyclist = cyclist);
 	}

@@ -1,3 +1,13 @@
-<p>
-  programs works!
-</p>
+<p-dataTable [value]="programs" [(selection)]="selectedPrograms" selectionMode="multiple" dataKey="id">
+	<p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+	<p-column field="name" header="Title" [editable]="true"></p-column>
+	<p-column field="description" header="Description" [editable]="true"></p-column>
+	<p-column styleClass="col-button overflow-visible" [style]="{'overflow':'visible'}">
+        <ng-template let-program="rowData" pTemplate="body">
+			<button pButton type="button" (click)="edit(program)" icon="fa-edit" label="Edit"></button>
+			<button pButton type="button" (click)="remove(program)" icon="fa-trash" label="Delete"></button>
+        </ng-template>
+    </p-column>
+</p-dataTable>
+
+<p-confirmDialog width="425"></p-confirmDialog>

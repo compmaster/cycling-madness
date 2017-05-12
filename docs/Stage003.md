@@ -68,3 +68,9 @@ Parameters may vary depending on age, experience, period and cyclist settings.
 Discussion: There are 2 technical possibilities:
 1. Create a copy of training plan for each cyclist
 2. Derive sessions from team training plan
+
+## TODO
+
+1. Delete cyclist type. Amateur cyclists often do both road and MTB.
+2. Delete team training method. This app is focused on SCRUM.
+3. Delete team type. Use tags instead.

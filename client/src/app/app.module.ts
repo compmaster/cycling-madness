@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataTableModule, SharedModule, SplitButtonModule, ConfirmDialogModule, GrowlModule, SelectButtonModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, SplitButtonModule, ConfirmDialogModule, GrowlModule, SelectButtonModule, ConfirmationService } from 'primeng/primeng';
 
 import { AlertService } from './services/alert.service';
 import { CyclistService } from './services/cyclist.service';
+import { ProgramService } from './services/program.service';
 import { TeamService } from './services/team.service';
+import { ApiService } from './services/api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -18,6 +20,7 @@ import { AlertsComponent } from './components/alerts/alerts.component';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import { EtudesComponent } from './components/etudes/etudes.component';
 import { ProgramsComponent } from './components/programs/programs.component';
+import { EditProgramComponent } from './components/edit-program/edit-program.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +32,8 @@ import { ProgramsComponent } from './components/programs/programs.component';
 		AlertsComponent,
 		EditTeamComponent,
 		EtudesComponent,
-		ProgramsComponent
+		ProgramsComponent,
+		EditProgramComponent
 	],
 	imports: [
 		BrowserModule,
@@ -44,7 +48,13 @@ import { ProgramsComponent } from './components/programs/programs.component';
 		GrowlModule,
 		SelectButtonModule
 	],
-	providers: [AlertService, CyclistService, TeamService],
+	providers: [
+		ApiService,
+		AlertService,
+		ConfirmationService,
+		CyclistService,
+		ProgramService,
+		TeamService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

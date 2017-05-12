@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Cyclist } from '../entities/cyclist';
-import { API_ENDPOINT } from '../app.config';
-import 'rxjs/add/operator/map';
+import { ApiService } from '../services/api.service';
 import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CyclistService {
 
-	constructor(private http: Http) { }
+	constructor(private api: ApiService<Cyclist>) {}
 
 	getCyclists(): Observable<Cyclist[]> {
-		return this.http.get(API_ENDPOINT + 'cyclists').map(response => response.json());
+		return this.api.getAll('cyclists');
 	}
 
 	getCyclist(id: number): Observable<Cyclist> {
-		return this.http.get(API_ENDPOINT + 'cyclists/' + id).map(response => response.json());
+		return this.api.getOne('cyclists', id);
 	}
 
 	remove(cyclist: Cyclist): Observable<Response> {
-		return this.http.delete(API_ENDPOINT + 'cyclists/' + cyclist.id);
+		return this.api.deleteOne('cyclists', cyclist);
 	}
 
 	update(cyclist: Cyclist): Observable<Response> {
-		return this.http.put(API_ENDPOINT + 'cyclists/' + cyclist.id, cyclist);
+		return this.api.updateOne('cyclists', cyclist);
 	}
-	
+
 	create(cyclist: Cyclist): Observable<Response> {
-		return this.http.post(API_ENDPOINT + 'cyclists', cyclist);
+		return this.api.createOne('cyclists', cyclist);
 	}
 
 }

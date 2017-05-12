@@ -7,16 +7,18 @@ import javax.persistence.Table;
 
 /**
  * Training program entity.
+ *
  * @author compmaster
  */
 @Entity
-@Table(name="programs")
+@Table(name = "programs")
 @SuppressWarnings("PersistenceUnitPresent")
 public class Program implements Serializable {
 
 	@Id
 	private Long id;
 	private String name;
+	private String description;
 
 	public Long getId() {
 		return id;
@@ -25,5 +27,21 @@ public class Program implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 }
