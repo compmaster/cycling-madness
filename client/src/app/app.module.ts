@@ -21,6 +21,10 @@ import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import { EtudesComponent } from './components/etudes/etudes.component';
 import { ProgramsComponent } from './components/programs/programs.component';
 import { EditProgramComponent } from './components/edit-program/edit-program.component';
+import { CyclistResolverService } from './resolvers/cyclist-resolver.service';
+import { TeamResolverService } from './resolvers/team-resolver.service';
+import { ProgramResolverService } from './resolvers/program-resolver.service';
+import { ProgramComponent } from './components/program/program.component';
 
 @NgModule({
 	declarations: [
@@ -33,7 +37,8 @@ import { EditProgramComponent } from './components/edit-program/edit-program.com
 		EditTeamComponent,
 		EtudesComponent,
 		ProgramsComponent,
-		EditProgramComponent
+		EditProgramComponent,
+		ProgramComponent
 	],
 	imports: [
 		BrowserModule,
@@ -53,8 +58,11 @@ import { EditProgramComponent } from './components/edit-program/edit-program.com
 		AlertService,
 		ConfirmationService,
 		CyclistService,
+		CyclistResolverService,
 		ProgramService,
-		TeamService],
+		ProgramResolverService,
+		TeamService,
+		TeamResolverService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

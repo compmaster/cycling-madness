@@ -1,37 +1,34 @@
 package cyclingmadness.dto;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Training program entity.
- *
+ * Season period - a part of training program.
  * @author compmaster
  */
 @Entity
-@Table(name = "programs")
+@Table(name="periods")
 @SuppressWarnings("PersistenceUnitPresent")
-public class Program implements Serializable {
+public class Period implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id")
+	private Program program;
+	
 	private String name;
 	private String description;
-
-	@OneToMany(mappedBy = "program")
-	private List<Period> periods;
-	
-	@OneToMany(mappedBy="program")
-	private List<Etude> etudes;
-	
-	@OneToMany(mappedBy="program")
-	private List<Aspect> season;
+	private int weeks;
 
 	public Long getId() {
 		return id;
@@ -39,6 +36,14 @@ public class Program implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Program getProgram() {
+		return program;
+	}
+
+	public void setProgram(Program program) {
+		this.program = program;
 	}
 
 	public String getName() {
@@ -57,12 +62,12 @@ public class Program implements Serializable {
 		this.description = description;
 	}
 
-	public List<Period> getPeriods() {
-		return periods;
+	public int getWeeks() {
+		return weeks;
 	}
 
-	public void setPeriods(List<Period> periods) {
-		this.periods = periods;
+	public void setWeeks(int weeks) {
+		this.weeks = weeks;
 	}
-
+	
 }

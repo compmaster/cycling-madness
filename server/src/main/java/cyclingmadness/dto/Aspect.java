@@ -1,37 +1,25 @@
 package cyclingmadness.dto;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Training program entity.
+ * Training aspect (force, endurance, speed) - part of training program.
  *
  * @author compmaster
  */
 @Entity
-@Table(name = "programs")
-@SuppressWarnings("PersistenceUnitPresent")
-public class Program implements Serializable {
+@Table(name = "aspects")
+public class Aspect implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
 	private String description;
-
-	@OneToMany(mappedBy = "program")
-	private List<Period> periods;
-	
-	@OneToMany(mappedBy="program")
-	private List<Etude> etudes;
-	
-	@OneToMany(mappedBy="program")
-	private List<Aspect> season;
 
 	public Long getId() {
 		return id;
@@ -55,14 +43,6 @@ public class Program implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<Period> getPeriods() {
-		return periods;
-	}
-
-	public void setPeriods(List<Period> periods) {
-		this.periods = periods;
 	}
 
 }

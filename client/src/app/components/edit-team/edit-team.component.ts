@@ -40,7 +40,7 @@ export class EditTeamComponent implements OnInit {
 			{ label: 'Professional Road', value: TeamType.ROAD_PROFESSIONAL }
 		];
 	}
-	
+
 	fillTrainingMethods() {
 		this.trainingMethods = [
 			{ label: 'Self', value: TrainingMethod.SELF },
@@ -53,32 +53,34 @@ export class EditTeamComponent implements OnInit {
 		this.createDefaultTeam();
 		this.loadTeamForEdit();
 	}
-	
+
 	createDefaultTeam() {
 		this.team = new Team();
 		this.team.type = TeamType.TRIP;
 		this.team.trainingMethod = TrainingMethod.SCRUM;
 	}
-	
+
 	loadTeamForEdit() {
-		this.route.params.switchMap((params: Params) => this.teamService
-			.getTeam(+params['id']))
-			.subscribe((team: Team) => this.team = team);
+		this.route.data.subscribe((data: { team: Team }) => {
+			if(data && data.team) {
+				this.team = data.team;
+			}
+		});
 	}
-	
+
 	save() {
-		if(this.team.id) {
+		if (this.team.id) {
 			this.teamService.update(this.team).subscribe(() => this.onUpdated());
 		} else {
 			this.teamService.create(this.team).subscribe(() => this.onCreated());
 		}
 	}
-	
+
 	onCreated() {
 		this.alertService.success("Team created successfully.", this.team.name);
 		this.router.navigate(['teams']);
 	}
-	
+
 	onUpdated() {
 		this.alertService.success("Team updated successfully.", this.team.name);
 		this.router.navigate(['teams']);

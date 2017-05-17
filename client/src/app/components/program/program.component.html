@@ -1,0 +1,19 @@
+<h1>Training program details</h1>
+<p>
+	<b>Program:</b> {{program.name}}
+</p>
+<p>
+	<b>Description:</b> {{program.description}}
+</p>
+<h2>Periods</h2>
+<ul>
+	<li *ngFor="let period of program.periods">{{period.name}}</li>
+</ul>
+<h2>Etudes</h2>
+<ul>
+	<li *ngFor="let etude of program.etudes">[{{etude.symbol}}] {{etude.name}}</li>
+</ul>
+<h2>Aspects</h2>
+<ul>
+	<li *ngFor="let aspect of program.aspects">{{aspect.name}}</li>
+</ul>

@@ -33,12 +33,11 @@ export class EditProgramComponent implements OnInit {
 	}
 	
 	loadProgramForEdit() {
-		this.route.params.subscribe(params => {
-			let id = +params['id'];
-			if(id > 0) {
-				this.programService.getProgram(+params['id']);
+		this.route.data.subscribe((data: { program: Program }) => {
+			if(data && data.program) {
+				this.program = data.program;
 			}
-		).subscribe((program: Program) => this.program = program);
+		});
 	}
 	
 	save() {

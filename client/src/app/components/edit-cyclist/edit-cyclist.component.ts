@@ -5,8 +5,6 @@ import { CyclistType } from '../../enums/cyclist-type.enum';
 import { CyclistService } from '../../services/cyclist.service';
 import { AlertService } from '../../services/alert.service';
 import { SelectItem } from 'primeng/primeng';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/filter';
 
 @Component({
 	selector: 'cm-edit-cyclist',
@@ -28,7 +26,7 @@ export class EditCyclistComponent implements OnInit {
 		this.fillCyclistTypes();
 		this.initCyclist();
 	}
-	
+
 	fillCyclistTypes() {
 		this.types = [
 			{ label: 'Trip', value: CyclistType.TRIP },
@@ -38,36 +36,38 @@ export class EditCyclistComponent implements OnInit {
 			{ label: 'Admin', value: CyclistType.ADMIN }
 		];
 	}
-	
+
 	initCyclist() {
 		this.createDefaultCyclist();
 		this.loadCyclistForEdit();
 	}
-	
+
 	createDefaultCyclist() {
 		this.cyclist = new Cyclist();
 		this.cyclist.type = CyclistType.TRIP;
 	}
-	
+
 	loadCyclistForEdit() {
-		this.route.params.filter(x => x['id']).switchMap((params: Params) => this.cyclistService
-			.getCyclist(+params['id']))
-			.subscribe((cyclist: Cyclist) => this.cyclist = cyclist);
+		this.route.data.subscribe((data: { cyclist: Cyclist }) => {
+			if(data && data.cyclist) {
+				this.cyclist = data.cyclist;
+			}
+		});
 	}
-	
+
 	save() {
-		if(this.cyclist.id) {
+		if (this.cyclist.id) {
 			this.cyclistService.update(this.cyclist).subscribe(() => this.onUpdated());
 		} else {
 			this.cyclistService.create(this.cyclist).subscribe(() => this.onCreated());
 		}
 	}
-	
+
 	onCreated() {
 		this.alertService.success("Cyclist created successfully.", this.cyclist.name);
 		this.router.navigate(['cyclists']);
 	}
-	
+
 	onUpdated() {
 		this.alertService.success("Cyclist updated successfully.", this.cyclist.name);
 		this.router.navigate(['cyclists']);

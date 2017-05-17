@@ -1,5 +1,6 @@
 export enum EtudeType {
-	CONTINUOUS,
+	UNSPECIFIED,
+	RECOVERY,
 	INTERVAL,
 	SPRINT
 }

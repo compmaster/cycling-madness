@@ -6,6 +6,9 @@ import { ProgramsComponent } from './components/programs/programs.component';
 import { EditCyclistComponent } from './components/edit-cyclist/edit-cyclist.component';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import { EditProgramComponent } from './components/edit-program/edit-program.component';
+import { CyclistResolverService } from './resolvers/cyclist-resolver.service';
+import { TeamResolverService } from './resolvers/team-resolver.service';
+import { ProgramResolverService } from './resolvers/program-resolver.service';
 
 const routes: Routes = [
 	{
@@ -27,7 +30,10 @@ const routes: Routes = [
 	},
 	{
 		path: 'edit-cyclist/:id',
-		component: EditCyclistComponent
+		component: EditCyclistComponent,
+		resolve: {
+			cyclist: CyclistResolverService
+		}
 	},
 	{
 		path: 'add-cyclist',
@@ -35,7 +41,10 @@ const routes: Routes = [
 	},
 	{
 		path: 'edit-team/:id',
-		component: EditTeamComponent
+		component: EditTeamComponent,
+		resolve: {
+			team: TeamResolverService
+		}
 	},
 	{
 		path: 'add-team',
@@ -43,7 +52,10 @@ const routes: Routes = [
 	},
 	{
 		path: 'edit-program/:id',
-		component: EditProgramComponent
+		component: EditProgramComponent,
+		resolve: {
+			program: ProgramResolverService
+		}
 	},
 	{
 		path: 'add-program',
