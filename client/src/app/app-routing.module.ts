@@ -9,11 +9,13 @@ import { EditProgramComponent } from './components/edit-program/edit-program.com
 import { CyclistResolverService } from './resolvers/cyclist-resolver.service';
 import { TeamResolverService } from './resolvers/team-resolver.service';
 import { ProgramResolverService } from './resolvers/program-resolver.service';
+import { ProgramComponent } from "./components/program/program.component";
 
 const routes: Routes = [
 	{
 		path: '',
 		pathMatch: 'full',
+
 		redirectTo: 'cyclists'
 	},
 	{
@@ -27,6 +29,13 @@ const routes: Routes = [
 	{
 		path: 'programs',
 		component: ProgramsComponent
+	},
+	{
+		path: 'program',
+		component: ProgramComponent,
+		resolve: {
+			program: ProgramResolverService
+		}
 	},
 	{
 		path: 'edit-cyclist/:id',
@@ -67,4 +76,5 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

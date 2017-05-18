@@ -6,7 +6,8 @@ package cyclingmadness.dto;
  * @author compmaster
  */
 public enum EtudeType {
-	CONTINUOUS,
+	UNSPECIFIED,
+	RECOVERY,
 	INTERVAL,
 	SPRINT
 }

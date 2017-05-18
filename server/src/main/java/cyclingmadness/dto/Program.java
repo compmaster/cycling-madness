@@ -15,7 +15,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "programs")
-@SuppressWarnings("PersistenceUnitPresent")
 public class Program implements Serializable {
 
 	@Id
@@ -26,12 +25,12 @@ public class Program implements Serializable {
 
 	@OneToMany(mappedBy = "program")
 	private List<Period> periods;
-	
-	@OneToMany(mappedBy="program")
+
+	@OneToMany(mappedBy = "program")
 	private List<Etude> etudes;
-	
-	@OneToMany(mappedBy="program")
-	private List<Aspect> season;
+
+	@OneToMany(mappedBy = "program")
+	private List<Aspect> aspects;
 
 	public Long getId() {
 		return id;
@@ -63,6 +62,22 @@ public class Program implements Serializable {
 
 	public void setPeriods(List<Period> periods) {
 		this.periods = periods;
+	}
+
+	public List<Etude> getEtudes() {
+		return etudes;
+	}
+
+	public void setEtudes(List<Etude> etudes) {
+		this.etudes = etudes;
+	}
+
+	public List<Aspect> getAspects() {
+		return aspects;
+	}
+
+	public void setAspects(List<Aspect> aspects) {
+		this.aspects = aspects;
 	}
 
 }

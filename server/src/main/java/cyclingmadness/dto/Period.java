@@ -23,7 +23,6 @@ public class Period implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
 	private Program program;
 	
 	private String name;

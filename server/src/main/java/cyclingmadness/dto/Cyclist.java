@@ -15,7 +15,6 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "cyclists")
-@SuppressWarnings("PersistenceUnitPresent")
 public class Cyclist implements Serializable {
 
 	@Id
